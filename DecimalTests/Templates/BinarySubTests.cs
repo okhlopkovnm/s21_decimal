@@ -23,8 +23,7 @@ public class BinarySubTests : BaseTest
     internal override string GetHeader()
     {
         var sb = new StringBuilder();
-        sb.AppendLine("#include \"../../lib/binary/s21_big_binary.h\"");
-        sb.AppendLine("#include \"../../lib/binary/s21_big_binary_sub.c\"");
+        sb.AppendLine("#include \"../lib/s21_sub.c\"");
         sb.AppendLine("#include <check.h>");
         return sb.ToString();
     }
@@ -32,11 +31,12 @@ public class BinarySubTests : BaseTest
 
     public void Exec()
     {
-        var suite1 = AddSuite("binary_sub");
+        var suite1 = AddSuite("sub");
         var case1 = suite1.AddCase("core");
         Test(case1, "sub_simple", new decimal([321, 0, 0, 0]), new decimal([100, 0, 0, 0]));
         Test(case1, "sub_nil_should_be_same", new decimal([123123, 12, 4, 0]), new decimal([0, 0, 0, 0]));
         Test(case1, "sub_same_should_be_nil", new decimal([321, 0, 0, 0]), new decimal([321, 0, 0, 0]));
+        Test(case1, "sub_1", 654846548.5464654m, 546987984.5464654m);
         Export();
     }
 }
