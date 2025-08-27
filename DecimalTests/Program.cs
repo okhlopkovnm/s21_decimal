@@ -4,6 +4,5 @@ using DecimalTests.Templates;
 
 Console.WriteLine("Hello, World!");
 
-var binaryAddTest = new BinaryAddTests("binary_add", "c:\\temp\\1");
-
-binaryAddTest.Exec();
+(new BinaryAddTests("binary_add", "c:\\temp\\1")).Exec();
+(new BinarySubTests("binary_sub", "c:\\temp\\1")).Exec();

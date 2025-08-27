@@ -46,12 +46,12 @@ public abstract class BaseTest
             sw.WriteLine("int main(void) {");
             sw.WriteLine("    Suite *s;");
             sw.WriteLine("    SRunner *sr;");
-            sw.WriteLine("    int failures;");
+            sw.WriteLine("    int failures = 0;");
 
             foreach (var suit in Suites)
             {
-                sw.WriteLine($"    *s = {suit.Name}();");
-                sw.WriteLine("    *sr = srunner_create(s);");
+                sw.WriteLine($"    s = {suit.Name}();");
+                sw.WriteLine("    sr = srunner_create(s);");
                 sw.WriteLine("    srunner_run_all(sr, CK_NORMAL);");
                 sw.WriteLine("    failures += srunner_ntests_failed(sr);");
             }
